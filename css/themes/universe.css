@@ -1,0 +1,171 @@
+/* ============================================================================
+   StatViz Universe — Tema UNIVERSO  (elemento distintivo del producto)
+   ----------------------------------------------------------------------------
+   Espacio profundo + nebulosas sutiles + campo de estrellas (canvas, ver
+   js/ui/universe.js). Superficies de "vidrio esmerilado" para que el chrome
+   flote sobre el cosmos sin perder legibilidad. Estética científica, no
+   videojuego: saturación contenida, movimiento lentísimo.
+   ========================================================================== */
+
+[data-theme="universe"] {
+  /* Superficies translúcidas (frosted glass sobre el espacio) */
+  --bg: #04060f;
+  --surface: rgba(18, 24, 44, 0.62);
+  --surface-raised: rgba(24, 31, 56, 0.74);
+  --surface-sunken: rgba(8, 11, 24, 0.55);
+  --surface-hover: rgba(40, 50, 84, 0.5);
+
+  --ink: #eaf0ff;
+  --ink-secondary: #a6b2d4;
+  --ink-tertiary: #6b78a0;
+  --ink-inverse: #04060f;
+
+  --border: rgba(132, 152, 220, 0.16);
+  --border-strong: rgba(132, 152, 220, 0.3);
+  --border-subtle: rgba(132, 152, 220, 0.08);
+
+  --accent: #8aa0ff;
+  --accent-hover: #a3b4ff;
+  --accent-active: #b6c3ff;
+  --accent-soft: rgba(138, 160, 255, 0.16);
+  --accent-softer: rgba(138, 160, 255, 0.08);
+  --accent-contrast: #04060f;
+  --focus-ring: rgba(138, 160, 255, 0.5);
+
+  --positive: #45d9a4;
+  --warning: #f0c059;
+  --critical: #ff8585;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 3px 14px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 14px 44px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(138, 160, 255, 0.06);
+
+  /* Paleta de datos luminosa para fondo cósmico (saturación contenida) */
+  --data-c1: #7c93ff;
+  --data-c2: #3fe0ab;
+  --data-c3: #ff9a5a;
+  --data-c4: #d18cff;
+  --data-c5: #4fd6ec;
+  --data-c6: #ff7a7a;
+  --data-c7: #ffcf66;
+  --data-c8: #aab6da;
+
+  --data-seq-0: #0a0f22;
+  --data-seq-1: #283a78;
+  --data-seq-2: #4f63c9;
+  --data-seq-3: #8aa0ff;
+  --data-seq-4: #c6d1ff;
+
+  --grid-line: rgba(132, 152, 220, 0.1);
+  --axis-line: rgba(132, 152, 220, 0.26);
+}
+
+/* Fondo cósmico del lienzo (degradado radial profundo) */
+[data-theme="universe"] body,
+body[data-theme="universe"] {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1200px 800px at 78% -10%, #131a3a 0%, transparent 55%),
+    radial-gradient(1000px 700px at 12% 110%, #100f2e 0%, transparent 55%),
+    radial-gradient(900px 900px at 50% 50%, #060a18 0%, #04060f 70%);
+}
+
+/* En el tema Universo el lienzo central es casi transparente:
+   los gráficos parecerán flotar en el espacio. */
+[data-theme="universe"] .workspace {
+  background-color: transparent;
+}
+
+/* Vidrio esmerilado en las zonas del chrome */
+[data-theme="universe"] .topbar,
+[data-theme="universe"] .sidebar,
+[data-theme="universe"] .inspector,
+[data-theme="universe"] .statusbar {
+  background-color: var(--surface);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  backdrop-filter: blur(18px) saturate(1.1);
+}
+
+/* Marco del gráfico también esmerilado */
+[data-theme="universe"] .canvas-frame {
+  background-color: var(--surface);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+/* Fallback si no hay soporte de backdrop-filter: opacidades más sólidas */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  [data-theme="universe"] {
+    --surface: rgba(18, 24, 44, 0.94);
+    --surface-sunken: rgba(8, 11, 24, 0.94);
+  }
+  [data-theme="universe"] .workspace {
+    background-color: #060a18;
+  }
+}
+
+/* ------------------------------------------------------------------------
+   Capa de fondo cósmico: nebulosas (pseudo-elementos) + canvas de estrellas.
+   Visible únicamente en el tema Universo. Detrás de toda la app. Inerte.
+   ------------------------------------------------------------------------ */
+.universe-bg {
+  display: none;
+}
+[data-theme="universe"] .universe-bg {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-canvas);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Nebulosa 1 — violeta */
+[data-theme="universe"] .universe-bg::before {
+  content: "";
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  top: -18vw;
+  right: -12vw;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(124, 78, 217, 0.34) 0%,
+    rgba(124, 78, 217, 0.08) 40%,
+    transparent 70%
+  );
+  filter: blur(40px);
+  animation: nebula-drift 34s var(--ease-in-out) infinite;
+}
+
+/* Nebulosa 2 — cian/teal */
+[data-theme="universe"] .universe-bg::after {
+  content: "";
+  position: absolute;
+  width: 55vw;
+  height: 55vw;
+  bottom: -20vw;
+  left: -14vw;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(14, 116, 144, 0.3) 0%,
+    rgba(14, 116, 144, 0.07) 42%,
+    transparent 70%
+  );
+  filter: blur(46px);
+  animation: nebula-drift 42s var(--ease-in-out) infinite reverse;
+}
+
+.universe-bg__stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* El logotipo glifo gana un leve halo en el espacio */
+[data-theme="universe"] .wordmark__glyph {
+  box-shadow: 0 0 16px rgba(138, 160, 255, 0.45);
+}

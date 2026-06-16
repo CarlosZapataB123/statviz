@@ -1,0 +1,163 @@
+/* ============================================================================
+   StatViz Universe — Design Tokens
+   ----------------------------------------------------------------------------
+   Fuente única de verdad para color, tipografía, espaciado, radios, sombras,
+   movimiento y dimensiones de layout.
+
+   Estrategia de temas:
+   - Este archivo define los TOKENS ESTRUCTURALES (invariantes entre temas) y
+     los TOKENS DE COLOR con sus valores del tema CLARO como base por defecto,
+     de modo que nunca exista un "flash" sin estilos.
+   - Los temas Oscuro y Universo SOLO sobreescriben tokens de color mediante
+     selectores [data-theme="..."] de igual especificidad (ver css/themes/*).
+   ========================================================================== */
+
+:root {
+  /* --- Familias tipográficas --------------------------------------------- */
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas,
+    "Liberation Mono", monospace;
+  --font-serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+
+  /* --- Escala tipográfica (tercera mayor, base 15px) --------------------- */
+  --text-2xs: 0.6875rem;  /* 11px — microetiquetas mono */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.8125rem;   /* 13px */
+  --text-base: 0.9375rem; /* 15px — cuerpo */
+  --text-md: 1.0625rem;   /* 17px */
+  --text-lg: 1.25rem;     /* 20px */
+  --text-xl: 1.5rem;      /* 24px */
+  --text-2xl: 1.9375rem;  /* 31px */
+  --text-3xl: 2.5rem;     /* 40px — hero */
+
+  /* --- Pesos -------------------------------------------------------------- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* --- Interlineado ------------------------------------------------------- */
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+
+  /* --- Tracking ----------------------------------------------------------- */
+  --tracking-tight: -0.011em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-label: 0.07em; /* mono en mayúsculas (eyebrows, etiquetas) */
+
+  /* --- Espaciado (rejilla de 4px) ---------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* --- Radios (contenidos, atemporales) ---------------------------------- */
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 999px;
+
+  /* --- Movimiento --------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+
+  /* --- Dimensiones de layout --------------------------------------------- */
+  --topbar-h: 56px;
+  --statusbar-h: 34px;
+  --sidebar-w: 300px;
+  --inspector-w: 344px;
+  --workspace-max: 1120px;
+
+  /* --- Capas (z-index) ---------------------------------------------------- */
+  --z-canvas: 0;     /* campo de estrellas del tema Universo */
+  --z-base: 1;
+  --z-sticky: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-tooltip: 400;
+
+  /* ======================================================================
+     COLOR — Tema CLARO (base por defecto)
+     ====================================================================== */
+
+  /* Superficies */
+  --bg: #fafbfc;            /* lienzo de la app: blanco-papel frío */
+  --surface: #ffffff;       /* paneles y zona de gráfico (limpia) */
+  --surface-raised: #ffffff;
+  --surface-sunken: #f1f4f8;
+  --surface-hover: #f4f7fb;
+
+  /* Tinta (texto) */
+  --ink: #13203a;           /* tinta profunda, ligeramente azul */
+  --ink-secondary: #51617d;
+  --ink-tertiary: #8593aa;
+  --ink-inverse: #ffffff;
+
+  /* Bordes y separadores */
+  --border: #e4e9f0;
+  --border-strong: #cdd6e2;
+  --border-subtle: #eef2f7;
+
+  /* Acento (chrome interactivo: enlaces, activo, foco, botón primario) */
+  --accent: #2b44c9;        /* cobalto-índigo: tinta de plano científico */
+  --accent-hover: #2236a8;
+  --accent-active: #1c2d8c;
+  --accent-soft: rgba(43, 68, 201, 0.08);
+  --accent-softer: rgba(43, 68, 201, 0.04);
+  --accent-contrast: #ffffff;
+  --focus-ring: rgba(43, 68, 201, 0.36);
+
+  /* Semánticos de estado (uso muy puntual) */
+  --positive: #0c8b5a;
+  --warning: #c77700;
+  --critical: #cc2f2f;
+  --positive-soft: rgba(12, 139, 90, 0.1);
+  --warning-soft: rgba(199, 119, 0, 0.1);
+  --critical-soft: rgba(204, 47, 47, 0.1);
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px rgba(16, 28, 54, 0.04), 0 1px 1px rgba(16, 28, 54, 0.03);
+  --shadow-md: 0 2px 8px rgba(16, 28, 54, 0.06), 0 1px 2px rgba(16, 28, 54, 0.04);
+  --shadow-lg: 0 8px 28px rgba(16, 28, 54, 0.1), 0 2px 6px rgba(16, 28, 54, 0.05);
+
+  /* ----------------------------------------------------------------------
+     PALETA DE DATOS — la señal distintiva del producto.
+     Categórica afinada, armónica y razonablemente segura para daltonismo.
+     Será consumida por el motor de gráficos (Fases 3+). Aquí se anticipa.
+     ---------------------------------------------------------------------- */
+  --data-c1: #3b5bdb; /* índigo */
+  --data-c2: #0ca678; /* verde-teal */
+  --data-c3: #e8590c; /* naranja */
+  --data-c4: #9c36b5; /* violeta */
+  --data-c5: #1098ad; /* cian */
+  --data-c6: #e03131; /* rojo */
+  --data-c7: #f08c00; /* ámbar */
+  --data-c8: #495057; /* pizarra */
+
+  /* Anclas secuenciales (para mapas de calor / densidades, Fases 4+) */
+  --data-seq-0: #f3f6ff;
+  --data-seq-1: #b9c6f5;
+  --data-seq-2: #7188e6;
+  --data-seq-3: #3b5bdb;
+  --data-seq-4: #25307f;
+
+  /* Rejilla y ejes de gráfico */
+  --grid-line: #e8edf4;
+  --axis-line: #c2ccdb;
+}

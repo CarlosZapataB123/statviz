@@ -1,0 +1,15 @@
+{
+  "name": "statviz-universe",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Plataforma educativa de visualización estadística: 71 gráficos con interpretación automática, recomendador y exportación. 100% estática (sin backend ni paso de construcción).",
+  "license": "MIT",
+  "scripts": {
+    "test": "node tests/run-all.mjs",
+    "build:preview": "python3 build_preview.py",
+    "check:bundle": "node scripts/check-bundle.mjs",
+    "ci": "node tests/run-all.mjs && python3 build_preview.py && node scripts/check-bundle.mjs"
+  },
+  "keywords": ["estadística", "visualización", "plotly", "educación", "investigación"]
+}

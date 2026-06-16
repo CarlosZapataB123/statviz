@@ -1,0 +1,47 @@
+/* ============================================================================
+   StatViz Universe — Tema CLARO
+   Los valores base (variables.css) ya son claros; este archivo los reafirma de
+   forma explícita bajo [data-theme="light"] para simetría con los demás temas.
+   Igual especificidad que dark/universe: solo gana el tema activo.
+   ========================================================================== */
+
+[data-theme="light"] {
+  --bg: #fafbfc;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --surface-sunken: #f1f4f8;
+  --surface-hover: #f4f7fb;
+
+  --ink: #13203a;
+  --ink-secondary: #51617d;
+  --ink-tertiary: #8593aa;
+  --ink-inverse: #ffffff;
+
+  --border: #e4e9f0;
+  --border-strong: #cdd6e2;
+  --border-subtle: #eef2f7;
+
+  --accent: #2b44c9;
+  --accent-hover: #2236a8;
+  --accent-active: #1c2d8c;
+  --accent-soft: rgba(43, 68, 201, 0.08);
+  --accent-softer: rgba(43, 68, 201, 0.04);
+  --accent-contrast: #ffffff;
+  --focus-ring: rgba(43, 68, 201, 0.36);
+
+  --shadow-sm: 0 1px 2px rgba(16, 28, 54, 0.04), 0 1px 1px rgba(16, 28, 54, 0.03);
+  --shadow-md: 0 2px 8px rgba(16, 28, 54, 0.06), 0 1px 2px rgba(16, 28, 54, 0.04);
+  --shadow-lg: 0 8px 28px rgba(16, 28, 54, 0.1), 0 2px 6px rgba(16, 28, 54, 0.05);
+
+  --data-c1: #3b5bdb;
+  --data-c2: #0ca678;
+  --data-c3: #e8590c;
+  --data-c4: #9c36b5;
+  --data-c5: #1098ad;
+  --data-c6: #e03131;
+  --data-c7: #f08c00;
+  --data-c8: #495057;
+
+  --grid-line: #e8edf4;
+  --axis-line: #c2ccdb;
+}

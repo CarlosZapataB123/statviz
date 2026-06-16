@@ -1,0 +1,56 @@
+/* ============================================================================
+   StatViz Universe — Tema OSCURO
+   Azul-negro profundo (no negro puro). Acento cobalto aclarado para legibilidad.
+   La paleta de datos se ajusta hacia tonos algo más luminosos.
+   ========================================================================== */
+
+[data-theme="dark"] {
+  --bg: #0c111b;
+  --surface: #121826;
+  --surface-raised: #161d2e;
+  --surface-sunken: #0a0e17;
+  --surface-hover: #1a2233;
+
+  --ink: #e6ebf2;
+  --ink-secondary: #9aa7bd;
+  --ink-tertiary: #5e6b83;
+  --ink-inverse: #0c111b;
+
+  --border: #1f2a3c;
+  --border-strong: #2c3a52;
+  --border-subtle: #18212f;
+
+  --accent: #6e86ff;
+  --accent-hover: #8499ff;
+  --accent-active: #93a6ff;
+  --accent-soft: rgba(110, 134, 255, 0.14);
+  --accent-softer: rgba(110, 134, 255, 0.07);
+  --accent-contrast: #0c111b;
+  --focus-ring: rgba(110, 134, 255, 0.4);
+
+  --positive: #2fb37e;
+  --warning: #e0a93b;
+  --critical: #f0726f;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.36), 0 1px 3px rgba(0, 0, 0, 0.28);
+  --shadow-lg: 0 10px 34px rgba(0, 0, 0, 0.46), 0 3px 8px rgba(0, 0, 0, 0.34);
+
+  --data-c1: #6e8bff;
+  --data-c2: #2cd4a0;
+  --data-c3: #ff8a4c;
+  --data-c4: #c97cdb;
+  --data-c5: #3fc7dc;
+  --data-c6: #ff6b6b;
+  --data-c7: #ffc04d;
+  --data-c8: #9aa7bd;
+
+  --data-seq-0: #131b2c;
+  --data-seq-1: #243463;
+  --data-seq-2: #3f55b0;
+  --data-seq-3: #6e86ff;
+  --data-seq-4: #aebbff;
+
+  --grid-line: #1b2433;
+  --axis-line: #33425c;
+}

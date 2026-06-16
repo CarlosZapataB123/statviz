@@ -1,0 +1,81 @@
+/* ============================================================================
+   StatViz Universe — Animaciones
+   Movimiento al servicio del contenido, no decorativo.
+   El respeto a prefers-reduced-motion se aplica globalmente en base.css.
+   ========================================================================== */
+
+/* Entrada sutil de paneles/contenido (fade + leve ascenso) */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Secuencia de asentamiento del shell al cargar */
+@keyframes settle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Placeholder de carga (para futuros estados de cómputo) */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.is-loading {
+  background-image: linear-gradient(
+    90deg,
+    var(--surface-sunken) 0%,
+    var(--surface-hover) 50%,
+    var(--surface-sunken) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s var(--ease-in-out) infinite;
+}
+
+/* Deriva imperceptible de nebulosas (solo tema Universo) */
+@keyframes nebula-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(2%, -1.5%, 0) scale(1.06);
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.5;
+  }
+}
+
+/* Asentamiento escalonado de las zonas del shell */
+.topbar,
+.sidebar,
+.workspace,
+.inspector,
+.statusbar {
+  animation: settle var(--dur-slow) var(--ease-out) both;
+}
+.sidebar {
+  animation-delay: 40ms;
+}
+.workspace {
+  animation-delay: 80ms;
+}
+.inspector {
+  animation-delay: 120ms;
+}
